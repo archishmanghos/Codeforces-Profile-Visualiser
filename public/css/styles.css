@@ -1,0 +1,69 @@
+body {
+    background-color: #8595C7 !important;
+    font-family: 'Noto Sans', sans-serif !important;
+    color: white !important;
+}
+
+/******************************* classes **************************/
+
+.dp {
+    width: 10%;
+    height: 10%;
+}
+
+.footer-container {
+    text-align: center;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+}
+
+.form-info {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 5.5rem;
+}
+
+.form-text {
+    margin-bottom: 10px !important;
+    text-align: center;
+}
+
+.heading {
+    text-align: center;
+    margin-top: 20px !important;
+}
+
+.main-form {
+    height: 475px;
+}
+
+.login-button {
+    margin: 2rem 5rem;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.login-main {
+    height: auto;
+}
+
+.login-welcome-info {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.login-welcome-info-stats {
+    text-align: right;
+    margin-left: 30px;
+}
+
+.login-welcome-text {
+    text-align: center;
+}

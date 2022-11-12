@@ -1,0 +1,22 @@
+<%- include('header') -%> 
+    <div class="container login-main">
+        <div class="container login-welcome-info">
+            <img src="<%= dp %>" alt="Could not fetch Profile Picture" class="dp">
+            <div class="login-welcome-info-stats">
+                <p>Max Rating: <%= rating %></p>
+                <p>Followers: <%= friends %></p>
+                <p>From: <%= place %></p>
+                <p>Works/Studies at: <%= org %></p>
+            </div>
+        </div>
+        <div class="container login-welcome-text">
+            <h2>Welcome <%= firstName %> <%= lastName %>!</h2>
+        </div>
+        <div class="container login-buttons">
+            <form action="/login" method="post">
+                <button type="submit" class="btn btn-lg btn-primary login-button" name="button" value="subButton">Submission Stats</button>
+                <button type="submit" class="btn btn-lg btn-primary login-button" name="button" value="ratingButton">Rating Changes</button>
+            </form>
+        </div>
+    </div>
+<%- include('footer') -%> 
