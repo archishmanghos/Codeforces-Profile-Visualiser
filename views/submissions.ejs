@@ -1,3 +1,17 @@
 <%- include('header') -%>
-<h2>Submission</h2>
+<div class="container submission-container">
+    <h2 class="submission-container-header">Submission Statistics</h2>
+    <div class="container">
+        <div class="row submission-rating-header">
+            <% for (let i = 0; i < 10; i++) { %>
+                <div class="col"> < <%= allRatings[i] %></div>
+            <% } %>
+        </div>
+        <div class="row submission-count-header">
+            <% for (let i = 0; i < 10; i++) { %>
+                <div class="col"><%= ratings[i] %></div>
+            <% } %>
+        </div>
+    </div>
+</div>
 <%- include('footer') -%> 

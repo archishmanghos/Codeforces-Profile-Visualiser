@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const https = require('https');
+const plotly = require('plotly')("archishmanghosh", "3znZIQTgON5GawnxL4mz")
 const PORT = 3000;
 
 const app = express();
@@ -14,11 +15,13 @@ let ratingUrl = 'https://codeforces.com/api/user.rating?handle=';
 
 app.get('/', (req, res) => {
     res.render('home');
+    profileUrl = 'https://codeforces.com/api/user.info?handles=';
+    statusUrl = 'https://codeforces.com/api/user.status?handle=';
+    ratingUrl = 'https://codeforces.com/api/user.rating?handle=';
 });
 
 app.post('/', (req, res) => {
     const userName = req.body.cfUserName;
-    console.log(userName);
     profileUrl = profileUrl + userName;
     statusUrl = statusUrl + userName;
     ratingUrl = ratingUrl + userName;
@@ -34,7 +37,6 @@ app.get('/login', (req, res) => {
 
         response.on('end', () => {
             const jsonData = JSON.parse(data);
-            console.log(jsonData);
             if (jsonData.status === 'OK') {
                 res.render('login', {
                     handle: jsonData.result[0].handle,
@@ -64,9 +66,18 @@ app.post('/login', (req, res) =>{
     
             response.on('end', () => {
                 const jsonData = JSON.parse(data);
-                console.log(jsonData);
                 if (jsonData.status === 'OK') {
-                    res.render('submissions')
+                    let ratings = new Array(10).fill(0);
+                    let allRatings = [1200, 1400, 1600, 1900, 2100, 2300, 2400, 2600, 3000, 4000];
+                    for (let i = 0; i < jsonData.result.length; i++) {
+                        for (let j = 0; j < 10; j++) {
+                            if (jsonData.result[i].problem.rating < allRatings[j]) {
+                                ratings[j] += 1;
+                            }
+                        }
+                    }
+                    
+                    res.render('submissions', {ratings: ratings, allRatings: allRatings});
                 } else {
                     res.render('failure');
                 }
@@ -81,7 +92,7 @@ app.post('/login', (req, res) =>{
     
             response.on('end', () => {
                 const jsonData = JSON.parse(data);
-                console.log(jsonData);
+                // console.log(jsonData);
                 if (jsonData.status === 'OK') {
                     res.render('rating')
                 } else {
